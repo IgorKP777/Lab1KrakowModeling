@@ -13,10 +13,10 @@ if __name__ == '__main__':
 
     standardDeviation = m.sqrt(variance)
 
-    sigma = 1.96 * standardDeviation / m.sqrt(sampleSize)
+    delta = 1.96 * standardDeviation / m.sqrt(sampleSize)
 
-    x1 = average - sigma
-    x2 = average + sigma
+    x1 = average - delta
+    x2 = average + delta
 
     print('Оценка математического ожидания\n', round(average, 3))
     print('Оценка дисперсии\n', round(variance, 3))
