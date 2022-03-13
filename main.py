@@ -1,6 +1,7 @@
 import math as m
 import random as r
 import statistics as s
+from prettytable import PrettyTable as pt
 
 if __name__ == '__main__':
     n = 1000
@@ -17,8 +18,13 @@ if __name__ == '__main__':
 
     x1, x2 = average - delta, average + delta
 
-    print('Оценка математического ожидания\n', round(average, 3), sep='')
-    print('Оценка дисперсии\n', round(variance, 3), sep='')
-    print('Оценка среднеквадратического отклонения\n', round(standardDeviation, 3), sep='')
-    print('Интервальная оценка\n', '(', round(x1, 3), ', ', round(x2, 3), ')', sep='')
-    print('Точечная оценка\n', round((x1 + x2) / 2, 3), sep='')
+    table_result = pt()
+    table_result.title = 'Результаты'
+    table_result.field_names = ['Параметры оценки', 'Результат']
+    table_result.add_row(['Оценка математического ожидания', round(average, 3)])
+    table_result.add_row(['Оценка дисперсии', round(variance, 3)])
+    table_result.add_row(['Оценка среднеквадратического отклонения', round(standardDeviation, 3)])
+    table_result.add_row(['Интервальная оценка', '(' + str(round(x1, 3)) + ', ' + str(round(x2, 3)) + ')'])
+    table_result.add_row(['Точечная оценка', round((x1 + x2) / 2, 3)])
+
+    print(table_result)
